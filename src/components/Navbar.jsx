@@ -79,6 +79,8 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
         </button>
       )}
 
+      {isSidebarOpen && <button className={styles.mobileBackdrop} onClick={toggleSidebar} aria-label="Close menu overlay" />}
+
       <nav className={`${styles.navbar} ${isSidebarOpen ? styles.navbarOpen : styles.navbarClosed}`}>
         <div className={styles.navInner}>
           

@@ -4,6 +4,8 @@
   left: 0;
   width: 280px;
   height: 100vh;
+  min-height: 100vh;
+  height: 100dvh;
   z-index: 1000;
   padding: 2.5rem 0;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1);
@@ -53,6 +55,10 @@
   border-color: transparent;
   transform: scale(1.05) translateY(-2px);
   box-shadow: 0 12px 30px rgba(108, 99, 255, 0.3);
+}
+
+.mobileBackdrop {
+  display: none;
 }
 
 .navInner {
@@ -295,26 +301,38 @@
   display: none;
 }
 
+@media (min-width: 901px) {
+  .navbar {
+    height: 125vh;
+    min-height: 125vh;
+  }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 900px) {
   .navbar {
-    width: 280px;
+    width: min(82vw, 280px);
+    height: 112vh;
+    min-height: 112vh;
     border-right: 1px solid var(--glass-border);
     border-bottom: none;
-    padding: 2rem 0;
+    padding: 1.25rem 0;
+    z-index: 1002;
+    box-shadow: 18px 0 50px rgba(0, 0, 0, 0.35);
   }
   
   .navbarClosed {
     transform: translateX(-100%);
-    width: 280px;
+    width: min(82vw, 280px);
   }
 
   .navInner {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+    overflow-y: auto;
   }
 
   .logoRow {
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
   
   .hideSidebarBtn {
@@ -331,13 +349,46 @@
   
   .navActionsMobile {
     display: flex;
-    margin-top: auto;
-    padding-top: 2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--glass-border);
     width: 100%;
   }
 
+  .navLink {
+    font-size: 0.95rem;
+    padding: 0.72rem 0.85rem;
+    border-radius: 12px;
+  }
+
+  .navIcon {
+    font-size: 1.1rem;
+  }
+
   .floatingHamburger {
     display: flex;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    z-index: 1001;
+  }
+
+  .floatingHamburger:hover {
+    transform: translateX(-50%) scale(1.05) translateY(-2px);
+  }
+
+  .mobileBackdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    border: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
 }
