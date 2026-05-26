@@ -224,23 +224,15 @@
 }
 
 .eduIconWrapper {
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.1);
   width: 50px;
   height: 50px;
   border-radius: 12px;
   border: 1px solid var(--glass-border);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.eduIconWrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 0.35rem;
 }
 
 .eduTextWrapper {
