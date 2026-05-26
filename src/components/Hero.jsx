@@ -173,7 +173,9 @@ const Hero = () => {
 
               {/* Education Badge */}
               <div className={styles.educationBadge}>
-                <div className={styles.eduIconWrapper}>🎓</div>
+                <div className={styles.eduIconWrapper}>
+                  <img src="https://github.com/user-attachments/assets/ef8e972a-4b28-4cb2-9a2a-56849467d937" alt="VIT logo" />
+                </div>
                 <div className={styles.eduTextWrapper}>
                   <div className={styles.eduDegree}>Bachelor of Technology in Computer Science</div>
                   <div className={styles.eduMeta}>
