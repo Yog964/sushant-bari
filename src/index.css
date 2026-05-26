@@ -60,6 +60,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+[data-theme="light"] body {
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 22% 18%, rgba(90, 82, 213, 0.13), transparent 34%),
+    radial-gradient(circle at 78% 78%, rgba(0, 184, 148, 0.1), transparent 36%),
+    var(--bg-primary);
+  background-size: 38px 38px, 38px 38px, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
 #root {
   display: flex;
   min-height: 100vh;
