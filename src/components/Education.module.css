@@ -1,0 +1,155 @@
+.subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+
+.timelineItem {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2.5rem;
+}
+
+.left {
+  left: 0;
+  text-align: right;
+}
+
+.right {
+  left: 50%;
+  text-align: left;
+}
+
+.timelineDot {
+  position: absolute;
+  top: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+}
+
+.left .timelineDot {
+  right: -20px;
+}
+
+.right .timelineDot {
+  left: -20px;
+}
+
+.timelineCard {
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.timelineCard:hover {
+  transform: translateY(-4px);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.degree {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.duration {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  background: rgba(108, 99, 255, 0.1);
+  color: var(--accent-primary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.institution {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.gpaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.left .gpaRow { justify-content: flex-end; }
+
+.gpaIcon {
+  color: var(--accent-secondary);
+}
+
+.gpa {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent-secondary);
+}
+
+.courseWork {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .timelineLine {
+    left: 20px;
+  }
+
+  .timelineItem {
+    width: 100%;
+    padding-left: 4rem;
+    padding-right: 1rem;
+    text-align: left;
+  }
+
+  .left, .right { left: 0; text-align: left; }
+  .left .gpaRow { justify-content: flex-start; }
+
+  .left .timelineDot,
+  .right .timelineDot {
+    left: 0;
+    right: auto;
+  }
+}
