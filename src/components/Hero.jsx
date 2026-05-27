@@ -215,7 +215,7 @@ const Hero = () => {
               <a href="#projects" className={`${styles.btn} ${styles.btnPrimary}`}>
                 View Projects <FiArrowDown />
               </a>
-              <a href="https://drive.google.com/file/d/1JYDd-n25f4hZjV7aouXja1J8lZB7sVbt/view?usp=sharing" target="_blank" rel="noreferrer" className={`${styles.btn} ${styles.resumeBtn}`}>
+              <a href="https://drive.google.com/file/d/1qXg1xY4cd2MFuTxYGyFWwJ-25fjXIyeU/view?usp=drive_link" target="_blank" rel="noreferrer" className={`${styles.btn} ${styles.resumeBtn}`}>
                 Download Resume <FiDownload />
               </a>
               <a href={personalInfo.github} target="_blank" rel="noreferrer" className={`${styles.btn} ${styles.githubBtn}`}>
