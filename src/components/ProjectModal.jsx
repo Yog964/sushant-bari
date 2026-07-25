@@ -125,7 +125,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             <div className={styles.mediaGrid}>
               {project.details.media?.map((item, idx) => (
                 <div key={idx} className={styles.mediaItem}>
-                  <img src={item.url || item} alt={item.title || `Media ${idx}`} />
+                  <img src={item.url || item} alt={item.title || `Media ${idx}`} loading="lazy" />
                   {item.title && <p style={{textAlign: 'center', marginTop: '0.8rem', color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{item.title}</p>}
                 </div>
               ))}
@@ -139,7 +139,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             <div className={styles.mediaGrid}>
               {project.details.diagrams?.map((item, idx) => (
                 <div key={idx} className={styles.mediaItem}>
-                  <img src={item.url || item} alt={item.title || `Diagram ${idx}`} />
+                  <img src={item.url || item} alt={item.title || `Diagram ${idx}`} loading="lazy" />
                   {item.title && <p style={{textAlign: 'center', marginTop: '0.8rem', color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{item.title}</p>}
                 </div>
               ))}

@@ -87,8 +87,8 @@ const categoryColors = {
 };
 
 const skills = [
-  { category: 'Languages', items: ['C++', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'Dart'] },
-  { category: 'Frameworks & Libraries', items: ['React.js', 'Node.js', 'Express.js', 'FastAPI', 'Flask', 'Pandas', 'OpenCV', 'MediaPipe', 'SQLAlchemy', 'React-Leaflet', 'Recharts', 'Framer Motion', 'Flutter'] },
+  { category: 'Languages', items: ['C++', 'Java', 'Python', 'PHP', 'JavaScript', 'TypeScript', 'SQL', 'Dart'] },
+  { category: 'Frameworks & Libraries', items: ['React.js', 'Spring Boot', 'Node.js', 'Express.js', 'FastAPI', 'Flask', 'Pandas', 'OpenCV', 'MediaPipe', 'SQLAlchemy', 'React-Leaflet', 'Recharts', 'Framer Motion', 'Flutter'] },
   { category: 'Web Technologies', items: ['HTML', 'CSS'] },
   { category: 'Databases', items: ['MySQL', 'MongoDB', 'PostgreSQL', 'Supabase'] },
   { category: 'Tools', items: ['GitHub', 'Postman'] },
