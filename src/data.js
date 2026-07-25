@@ -18,12 +18,26 @@ export const personalInfo = {
     "experience": "1+",
     "papers": "2",
     "contributions": "500+",
-    "cgpa": "9.41"
+    "cgpa": "9.38"
   },
-  "about": "Enthusiastic Computer Science student at VIT Pune with a passion for solving real-world problems through technology and innovation. Interested in applying engineering concepts to develop practical and impactful solutions. Eager to learn new technologies, work on challenging projects, and continuously grow as a developer and problem-solver."
+  "about": [
+    "🎓 B.Tech CSE @ VIT Pune | CGPA: 9.38",
+    "Backend & Full-Stack Developer",
+    "Passionate about System Design and Scalable Architectures",
+    "Aspiring Distributed Systems & Cloud Infrastructure Engineer",
+    "Sharing software development and engineering content on YouTube"
+  ]
 };
 
 export const highlights = [
+  {
+    "id": 5,
+    "date": "July 2026",
+    "title": "Started My YouTube Channel",
+    "description": "I recently started a YouTube channel to share coding tutorials, project walkthroughs, and tech insights! Check out the link in my profile to see the latest videos.",
+    "link": "https://www.youtube.com/@Aristos_2",
+    "linkText": "Go to YouTube Channel"
+  },
   {
     "id": 4,
     "date": "May 2026",
@@ -33,8 +47,8 @@ export const highlights = [
 ];
 
 export const skills = [
-  { category: "Languages", items: ["C++", "Python", "JavaScript", "TypeScript", "SQL", "Dart"] },
-  { category: "Frameworks & Libraries", items: ["React.js", "Node.js", "Express.js", "FastAPI", "Flask", "Pandas", "OpenCV", "MediaPipe", "SQLAlchemy", "React-Leaflet", "Recharts", "Framer Motion", "Flutter"] },
+  { category: "Languages", items: ["C++", "Java", "Python", "PHP", "JavaScript", "TypeScript", "SQL", "Dart"] },
+  { category: "Frameworks & Libraries", items: ["React.js", "Spring Boot", "Node.js", "Express.js", "FastAPI", "Flask", "Pandas", "OpenCV", "MediaPipe", "SQLAlchemy", "React-Leaflet", "Recharts", "Framer Motion", "Flutter"] },
   { category: "Web Technologies", items: ["HTML", "CSS"] },
   { category: "Databases", items: ["MySQL", "MongoDB", "PostgreSQL", "Supabase"] },
   { category: "Tools", items: ["GitHub", "Postman"] }

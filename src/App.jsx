@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Highlights from './components/Highlights';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Achievements from './components/Achievements';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import { useDev } from './context/DevContext';
 import './index.css';
+
+// Lazy-loaded components (below the fold)
+const Highlights = lazy(() => import('./components/Highlights'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const Achievements = lazy(() => import('./components/Achievements'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,24 +31,15 @@ function App() {
 
   useEffect(() => {
     const loaderStartedAt = Date.now();
-    const minimumLoaderTime = 5000;
+    const minimumLoaderTime = 2000; // Minimum 3 seconds loading screen
     const fixedAssets = [
       'https://github.com/user-attachments/assets/fefd3c0d-32ee-4750-9bc1-91655529998f',
-      'https://github.com/user-attachments/assets/e9de0749-0299-451c-89a1-1ac86883b8e3',
+      'https://github.com/user-attachments/assets/45d46793-53a0-49aa-88b8-2503e5f73364',
       'https://github.com/user-attachments/assets/a7465aad-d2ff-47bc-aedb-608cb87e181a'
     ];
 
-    const getUrl = (item) => typeof item === 'string' ? item : item?.url;
-    const assetUrls = [
-      ...fixedAssets,
-      ...projects.flatMap(project => [
-        project.image,
-        ...(project.details?.media || []).map(getUrl),
-        ...(project.details?.diagrams || []).map(getUrl)
-      ]),
-      ...achievements.map(item => item.image),
-      ...certifications.map(item => item.image)
-    ]
+    // Only preload critical fixed assets, let the rest lazy load natively
+    const assetUrls = fixedAssets
       .filter(Boolean)
       .filter(url => url.includes('github.com/user-attachments'));
 
@@ -97,15 +90,19 @@ function App() {
         <section id="home">
           <Hero />
         </section>
-        <Highlights />
-        <Skills />
-        <section id="projects">
-          <Projects />
-        </section>
-        <Achievements />
-        <Contact />
+        <Suspense fallback={<div style={{ minHeight: '100vh' }}></div>}>
+          <Highlights />
+          <Skills />
+          <section id="projects">
+            <Projects />
+          </section>
+          <Achievements />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

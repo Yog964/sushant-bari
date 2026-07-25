@@ -31,7 +31,15 @@ export const DevProvider = ({ children }) => {
       const savedCertifications = localStorage.getItem('dev_certifications');
 
       if (savedProjects) setProjects(JSON.parse(savedProjects));
-      if (savedHighlights) setHighlights(JSON.parse(savedHighlights));
+      if (savedHighlights) {
+        const parsed = JSON.parse(savedHighlights);
+        const merged = parsed.map(p => {
+          const init = initialHighlights.find(ih => ih.id === p.id);
+          return init ? { ...p, ...init } : p;
+        });
+        const missing = initialHighlights.filter(ih => !parsed.some(p => p.id === ih.id));
+        setHighlights([...missing, ...merged].sort((a, b) => b.id - a.id));
+      }
       if (savedPersonalInfo) setPersonalInfo(JSON.parse(savedPersonalInfo));
       if (savedAchievements) setAchievements(JSON.parse(savedAchievements));
       if (savedCertifications) setCertifications(JSON.parse(savedCertifications));
@@ -127,8 +135,8 @@ export const personalInfo = ${JSON.stringify(personalInfo, null, 2)};
 export const highlights = ${JSON.stringify(highlights, null, 2)};
 
 export const skills = [
-  { category: "Languages", items: ["C++", "Python", "JavaScript", "TypeScript", "SQL", "Dart"] },
-  { category: "Frameworks & Libraries", items: ["React.js", "Node.js", "Express.js", "FastAPI", "Flask", "Pandas", "OpenCV", "MediaPipe", "SQLAlchemy", "React-Leaflet", "Recharts", "Framer Motion", "Flutter"] },
+  { category: 'Languages', items: ['C++', 'Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'Dart'] },
+  { category: 'Frameworks & Libraries', items: ['React.js', 'Spring Boot', 'Node.js', 'Express.js', 'FastAPI', 'Flask', 'Pandas', 'OpenCV', 'MediaPipe', 'SQLAlchemy', 'React-Leaflet', 'Recharts', 'Framer Motion', 'Flutter'] },
   { category: "Web Technologies", items: ["HTML", "CSS"] },
   { category: "Databases", items: ["MySQL", "MongoDB", "PostgreSQL", "Supabase"] },
   { category: "Tools", items: ["GitHub", "Postman"] }

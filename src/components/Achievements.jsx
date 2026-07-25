@@ -121,7 +121,7 @@ const Achievements = () => {
         {otherAchievements.map(item => (
           <div key={item.id} className={`glass-card ${styles.mediaCard}`}>
             {renderDevActions('achievement', item, deleteAchievement)}
-            {item.image && <img src={item.image} alt={item.title} className={styles.cardImage} />}
+            {item.image && <img src={item.image} alt={item.title} loading="lazy" className={styles.cardImage} />}
             <div className={styles.mediaContent}>
               <span className={styles.typeBadge}>{item.type || 'Achievement'}</span>
               <h3 className={styles.title}>{item.title}</h3>
@@ -150,7 +150,7 @@ const Achievements = () => {
         {certifications.map(item => (
           <div key={item.id} className={`glass-card ${styles.mediaCard}`}>
             {renderDevActions('certification', item, deleteCertification)}
-            <img src={item.image} alt={item.name} className={styles.cardImage} />
+            <img src={item.image} alt={item.name} loading="lazy" className={styles.cardImage} />
             <div className={styles.mediaContent}>
               <span className={styles.typeBadge}>Certificate</span>
               <h3 className={styles.title}>{item.name}</h3>

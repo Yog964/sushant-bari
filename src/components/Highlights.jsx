@@ -22,7 +22,7 @@ const Highlights = () => {
       <p className={styles.subtitle}>Recent milestones, releases, and achievements.</p>
 
       <div className={styles.timeline}>
-        {highlights.map((item, index) => (
+        {highlights.map((item) => (
           <div key={item.id} className={styles.timelineItem}>
             
             {/* Timeline Line & Dot */}
@@ -49,6 +49,17 @@ const Highlights = () => {
               <div className={styles.dateBadge}>{item.date}</div>
               <h3 className={styles.itemTitle}>{item.title}</h3>
               <p className={styles.itemDesc}>{item.description}</p>
+              {item.link && (
+                <a 
+                  href={item.link} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className={`btn ${styles.itemBtn}`}
+                  style={{ marginTop: '1rem', display: 'inline-flex', padding: '0.5rem 1rem', fontSize: '0.9rem', color: 'var(--bg-primary)', background: 'var(--text-primary)' }}
+                >
+                  {item.linkText || 'Learn More'} ↗
+                </a>
+              )}
             </div>
           </div>
         ))}

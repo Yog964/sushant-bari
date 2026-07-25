@@ -324,6 +324,7 @@
   .navbarClosed {
     transform: translateX(-100%);
     width: min(82vw, 280px);
+    box-shadow: none;
   }
 
   .navInner {
