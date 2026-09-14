@@ -334,7 +334,7 @@ const CodeforcesWidget = () => {
 
 
 const Hero = () => {
-  const profilePhotoUrl = 'https://github.com/user-attachments/assets/45d46793-53a0-49aa-88b8-2503e5f73364';
+  const profilePhotoUrl = 'https://github.com/user-attachments/assets/c0b5573c-7ac7-42e9-9c42-1ff25bc2f19a';
 
   return (
     <section className={styles.heroSection}>
