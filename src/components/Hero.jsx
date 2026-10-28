@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { personalInfo } from '../data';
 import styles from './Hero.module.css';
+import ImageWithSpinner from './ImageWithSpinner';
 import { FiArrowDown, FiDownload, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { SiLeetcode, SiCodeforces, SiYoutube } from 'react-icons/si';
 
@@ -346,7 +347,12 @@ const Hero = () => {
             
             <div className={styles.topRow}>
               <div className={styles.photoWrapper}>
-                <img src={profilePhotoUrl} alt={`${personalInfo.name} profile`} className={styles.photo} />
+                <ImageWithSpinner
+                  src={profilePhotoUrl}
+                  alt={`${personalInfo.name} profile`}
+                  className={styles.photo}
+                  spinnerSize={36}
+                />
               </div>
 
               {/* Quick CTA buttons beside photo */}

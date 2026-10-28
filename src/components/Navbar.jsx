@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
+import ImageWithSpinner from './ImageWithSpinner';
 import { 
   FiMenu, FiX, FiMoon, FiSun, FiChevronLeft,
   FiHome, FiStar, FiBookOpen, FiBriefcase, FiAward, FiMail, FiTrendingUp,
@@ -87,7 +88,12 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
           <div className={styles.logoRow}>
             <a href="#home" className={styles.logo} onDoubleClick={handleLogoDoubleClick} title="Double click for Dev Mode">
               <div className={styles.logoIconWrapper}>
-                <img src={logoUrl} alt="Portfolio logo" className={styles.logoImage} />
+                <ImageWithSpinner
+                  src={logoUrl}
+                  alt="Portfolio logo"
+                  className={styles.logoImage}
+                  spinnerSize={18}
+                />
               </div>
             </a>
             

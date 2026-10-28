@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './Achievements.module.css';
 import AchievementFormModal from './AchievementFormModal';
+import ImageWithSpinner from './ImageWithSpinner';
 import { useDev } from '../context/DevContext';
 import {
   FiEdit,
@@ -121,7 +122,16 @@ const Achievements = () => {
         {otherAchievements.map(item => (
           <div key={item.id} className={`glass-card ${styles.mediaCard}`}>
             {renderDevActions('achievement', item, deleteAchievement)}
-            {item.image && <img src={item.image} alt={item.title} loading="lazy" className={styles.cardImage} />}
+            {item.image && (
+              <ImageWithSpinner
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                className={styles.cardImage}
+                wrapperClassName={styles.cardImageWrapper}
+                spinnerSize={32}
+              />
+            )}
             <div className={styles.mediaContent}>
               <span className={styles.typeBadge}>{item.type || 'Achievement'}</span>
               <h3 className={styles.title}>{item.title}</h3>
@@ -150,7 +160,14 @@ const Achievements = () => {
         {certifications.map(item => (
           <div key={item.id} className={`glass-card ${styles.mediaCard}`}>
             {renderDevActions('certification', item, deleteCertification)}
-            <img src={item.image} alt={item.name} loading="lazy" className={styles.cardImage} />
+            <ImageWithSpinner
+              src={item.image}
+              alt={item.name}
+              loading="lazy"
+              className={styles.cardImage}
+              wrapperClassName={styles.cardImageWrapper}
+              spinnerSize={32}
+            />
             <div className={styles.mediaContent}>
               <span className={styles.typeBadge}>Certificate</span>
               <h3 className={styles.title}>{item.name}</h3>

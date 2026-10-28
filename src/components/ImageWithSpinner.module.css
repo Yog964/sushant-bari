@@ -1,0 +1,64 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.spinnerContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  color: var(--text-secondary, #94a3b8);
+  pointer-events: none;
+}
+
+.spinnerSvg {
+  animation: circularSpin 0.85s linear infinite;
+  display: block;
+}
+
+@keyframes circularSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.image {
+  display: block;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.imageHidden {
+  opacity: 0;
+}
+
+.imageLoaded {
+  opacity: 1;
+}
+
+.fallbackContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary, #94a3b8);
+  font-size: 1.25rem;
+}
+
+.fallbackIcon {
+  opacity: 0.45;
+}
