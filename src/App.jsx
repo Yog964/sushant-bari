@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import LoadingScreen from './components/LoadingScreen';
@@ -31,7 +31,8 @@ function App() {
 
   useEffect(() => {
     const loaderStartedAt = Date.now();
-    const minimumLoaderTime = 2000; // Minimum 3 seconds loading screen
+    const minimumLoaderTime = 1800; // Minimum duration to prevent screen flickering
+    const maxLoaderTime = 3000; // Hard cap: max 3 seconds loading screen
     const fixedAssets = [
       'https://github.com/user-attachments/assets/fefd3c0d-32ee-4750-9bc1-91655529998f',
       'https://github.com/user-attachments/assets/45d46793-53a0-49aa-88b8-2503e5f73364',
@@ -45,14 +46,28 @@ function App() {
 
     const uniqueUrls = [...new Set(assetUrls)];
 
-    if (uniqueUrls.length === 0) {
-      setLoadingProgress(100);
-      window.setTimeout(() => setIsLoading(false), minimumLoaderTime);
-      return;
-    }
-
     let completed = 0;
     let isCancelled = false;
+    let finishTimer = null;
+
+    const finishLoading = () => {
+      if (isCancelled) return;
+      setLoadingProgress(100);
+      setIsLoading(false);
+    };
+
+    // Hard cap: After maxLoaderTime (3s), dismiss loading screen regardless of asset state
+    const maxTimer = window.setTimeout(() => {
+      finishLoading();
+    }, maxLoaderTime);
+
+    if (uniqueUrls.length === 0) {
+      finishTimer = window.setTimeout(finishLoading, minimumLoaderTime);
+      return () => {
+        window.clearTimeout(maxTimer);
+        if (finishTimer) window.clearTimeout(finishTimer);
+      };
+    }
 
     const completeOne = () => {
       if (isCancelled) return;
@@ -61,11 +76,12 @@ function App() {
       setLoadingProgress(nextProgress);
 
       if (completed === uniqueUrls.length) {
+        window.clearTimeout(maxTimer);
         const elapsed = Date.now() - loaderStartedAt;
         const remainingTime = Math.max(0, minimumLoaderTime - elapsed);
 
-        window.setTimeout(() => {
-          if (!isCancelled) setIsLoading(false);
+        finishTimer = window.setTimeout(() => {
+          finishLoading();
         }, remainingTime);
       }
     };
@@ -79,6 +95,8 @@ function App() {
 
     return () => {
       isCancelled = true;
+      window.clearTimeout(maxTimer);
+      if (finishTimer) window.clearTimeout(finishTimer);
     };
   }, [projects, achievements, certifications]);
 

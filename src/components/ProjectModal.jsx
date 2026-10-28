@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './ProjectModal.module.css';
+import ImageWithSpinner from './ImageWithSpinner';
 import { FiX, FiCheckCircle, FiFileText, FiImage, FiGrid } from 'react-icons/fi';
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
@@ -125,7 +126,12 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             <div className={styles.mediaGrid}>
               {project.details.media?.map((item, idx) => (
                 <div key={idx} className={styles.mediaItem}>
-                  <img src={item.url || item} alt={item.title || `Media ${idx}`} loading="lazy" />
+                  <ImageWithSpinner
+                    src={item.url || item}
+                    alt={item.title || `Media ${idx}`}
+                    loading="lazy"
+                    spinnerSize={28}
+                  />
                   {item.title && <p style={{textAlign: 'center', marginTop: '0.8rem', color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{item.title}</p>}
                 </div>
               ))}
@@ -139,7 +145,12 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             <div className={styles.mediaGrid}>
               {project.details.diagrams?.map((item, idx) => (
                 <div key={idx} className={styles.mediaItem}>
-                  <img src={item.url || item} alt={item.title || `Diagram ${idx}`} loading="lazy" />
+                  <ImageWithSpinner
+                    src={item.url || item}
+                    alt={item.title || `Diagram ${idx}`}
+                    loading="lazy"
+                    spinnerSize={28}
+                  />
                   {item.title && <p style={{textAlign: 'center', marginTop: '0.8rem', color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{item.title}</p>}
                 </div>
               ))}

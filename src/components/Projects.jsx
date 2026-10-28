@@ -17,6 +17,7 @@ import {
 } from 'react-icons/fi';
 import ProjectModal from './ProjectModal';
 import ProjectFormModal from './ProjectFormModal';
+import ImageWithSpinner from './ImageWithSpinner';
 import styles from './Projects.module.css';
 import { useDev } from '../context/DevContext';
 
@@ -90,7 +91,13 @@ const Projects = () => {
           >
             {/* Project Image */}
             <div className={styles.projectImageWrapper}>
-              <img src={project.image} alt={project.title} loading="lazy" className={styles.projectImage} />
+              <ImageWithSpinner
+                src={project.image}
+                alt={project.title}
+                loading="lazy"
+                className={styles.projectImage}
+                spinnerSize={34}
+              />
               {isDevMode && (
                 <div style={{ position: 'absolute', top: '10px', right: '10px', display: 'flex', gap: '0.5rem', zIndex: 10 }}>
                   <button 
